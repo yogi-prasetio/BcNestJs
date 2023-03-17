@@ -8,11 +8,15 @@ import { Repository } from 'typeorm';
 export class CategoryService {
     constructor(
         @InjectRepository(Categories) private categoryRepo: Repository<Categories>,
-        @InjectRepository(Products) private productRepo: Repository<Categories>,
         ) {}
     
       public async findAll() {
         return await this.categoryRepo.find({
+            select: {
+              id: true,
+              name: true,
+              description: true,
+            },
             relations: {
                 products: true,
             },

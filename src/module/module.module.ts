@@ -20,9 +20,7 @@ import { JwtGuard } from 'src/auth/jwt/jwt.guard';
 import { LocalGuard } from 'src/auth/local/local.guard';
 import { UserController } from 'src/user/user.controller';
 import { UserService } from 'src/user/user.service';
-import { ProductService } from 'src/product/product.service';
 import { CustomerService } from 'src/customer/customer.service';
-import { ProductController } from 'src/product/product.controller';
 import { CustomerController } from 'src/customer/customer.controller';
 import { CategoryService } from 'src/category/category.service';
 import { CategoryController } from 'src/category/category.controller';
@@ -50,8 +48,8 @@ import { CategoryController } from 'src/category/category.controller';
       signOptions: { expiresIn: '2d' },
     })
   ],
-  providers: [CategoryService, ProductService, CustomerService, UserService, LocalGuard, JwtGuard],
-  controllers: [CategoryController, ProductController, CustomerController, UserController],
-  exports: [CategoryService, ProductService, CustomerService, UserService],
+  providers: [CategoryService, CustomerService, UserService, LocalGuard, JwtGuard],
+  controllers: [CategoryController, CustomerController, UserController],
+  exports: [CategoryService, CustomerService, UserService],
 })
 export class ModuleModule {}

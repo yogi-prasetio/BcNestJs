@@ -5,11 +5,13 @@ import {
   UseGuards,
   Request,
   Get,
+  Delete,
+  Param,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('auth')
+@Controller('user')
 export class UserController {
   constructor(private authService: UserService) {}
 
@@ -28,4 +30,17 @@ export class UserController {
     return this.authService.getAll(req.user);
     // return req.user;
   }
+
+    @Get()
+    public async getAll() {
+      return await this.authService.findAll();
+    }
+    @Get(':id')
+    public async getOne(@Param('id') id: number) {
+      return await this.authService.findOne(id);
+    }
+    @Delete(':id')
+    public async Delete(@Param('id') id: number) {
+      return await this.authService.Delete(id);
+    }
 }

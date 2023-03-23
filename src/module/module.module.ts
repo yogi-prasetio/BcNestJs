@@ -24,6 +24,16 @@ import { CustomerService } from 'src/customer/customer.service';
 import { CustomerController } from 'src/customer/customer.controller';
 import { CategoryService } from 'src/category/category.service';
 import { CategoryController } from 'src/category/category.controller';
+import { RegionService } from 'src/region/region.service';
+import { RegionController } from 'src/region/region.controller';
+import { CountryService } from 'src/country/country.service';
+import { CountryController } from 'src/country/country.controller';
+import { LocationService } from 'src/location/location.service';
+import { LocationController } from 'src/location/location.controller';
+import { DepartmentService } from 'src/department/department.service';
+import { DepartmentController } from 'src/department/department.controller';
+import { EmployeeService } from 'src/employee/employee.service';
+import { EmployeeController } from 'src/employee/employee.controller';
 
 @Module({
   imports: [
@@ -48,8 +58,34 @@ import { CategoryController } from 'src/category/category.controller';
       signOptions: { expiresIn: '2d' },
     })
   ],
-  providers: [CategoryService, CustomerService, UserService, LocalGuard, JwtGuard],
-  controllers: [CategoryController, CustomerController, UserController],
-  exports: [CategoryService, CustomerService, UserService],
+  providers: [
+    EmployeeService,
+    DepartmentService,
+    RegionService, 
+    CountryService,
+    LocationService,
+    CategoryService, 
+    CustomerService, 
+    UserService, 
+    LocalGuard, 
+    JwtGuard],
+  controllers: [
+    EmployeeController,
+    DepartmentController,
+    RegionController, 
+    CountryController,
+    LocationController,
+    CategoryController, 
+    CustomerController, 
+    UserController],
+  exports: [
+    EmployeeService,
+    DepartmentService,
+    RegionService, 
+    CountryService,
+    LocationService,
+    CategoryService, 
+    CustomerService, 
+    UserService],
 })
 export class ModuleModule {}

@@ -60,4 +60,21 @@ export class UserService {
       const profile = [user, customer];
       return profile;
   }
+
+  public async findAll() {
+    return await this.userRepo.find();
+  }
+
+  public async findOne(userId: number) {
+    return await this.userRepo.findOne({ where: { id: userId } });
+  }
+
+  public async Delete(id: number) {
+    try {
+      const user = await this.userRepo.delete(id);
+      return user;
+    } catch (error) {
+      return error.message;
+    }
+  }
 }

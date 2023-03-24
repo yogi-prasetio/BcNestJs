@@ -44,7 +44,7 @@ export class Employees {
   hireDate: Date | null;
 
   @Column("numeric", { name: "salary", nullable: true, precision: 8, scale: 2 })
-  salary: string | null;
+  salary: number | null;
 
   @Column("numeric", {
     name: "commission_pct",

@@ -21,7 +21,7 @@ export class Jobs {
     precision: 8,
     scale: 2,
   })
-  minSalary: string | null;
+  minSalary: number | null;
 
   @Column("numeric", {
     name: "max_salary",
@@ -29,7 +29,7 @@ export class Jobs {
     precision: 8,
     scale: 2,
   })
-  maxSalary: string | null;
+  maxSalary: number | null;
 
   @OneToMany(() => Employees, (employees) => employees.job)
   employees: Employees[];

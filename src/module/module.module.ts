@@ -34,6 +34,8 @@ import { DepartmentService } from 'src/department/department.service';
 import { DepartmentController } from 'src/department/department.controller';
 import { EmployeeService } from 'src/employee/employee.service';
 import { EmployeeController } from 'src/employee/employee.controller';
+import { JobService } from 'src/job/job.service';
+import { JobController } from 'src/job/job.controller';
 
 @Module({
   imports: [
@@ -59,6 +61,7 @@ import { EmployeeController } from 'src/employee/employee.controller';
     })
   ],
   providers: [
+    JobService,
     EmployeeService,
     DepartmentService,
     RegionService, 
@@ -70,6 +73,7 @@ import { EmployeeController } from 'src/employee/employee.controller';
     LocalGuard, 
     JwtGuard],
   controllers: [
+    JobController,
     EmployeeController,
     DepartmentController,
     RegionController, 
@@ -79,6 +83,7 @@ import { EmployeeController } from 'src/employee/employee.controller';
     CustomerController, 
     UserController],
   exports: [
+    JobService,
     EmployeeService,
     DepartmentService,
     RegionService, 

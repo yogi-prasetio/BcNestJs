@@ -27,7 +27,7 @@ export class Products {
   description: string | null;
 
   @Column("numeric", { name: "price", nullable: true })
-  price: string | null;
+  price: number | null;
 
   @Column("character varying", { name: "image", nullable: true, length: 200 })
   image: string | null;

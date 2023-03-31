@@ -27,20 +27,20 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Get('/profile')
   public async getProfile(@Request() req) {
-    return this.authService.getAll(req.user);
-    // return req.user;
+    // return this.authService.getAll(req.user);
+    return req.user;
   }
 
-    @Get()
-    public async getAll() {
-      return await this.authService.findAll();
-    }
-    @Get(':id')
-    public async getOne(@Param('id') id: number) {
-      return await this.authService.findOne(id);
-    }
-    @Delete(':id')
-    public async Delete(@Param('id') id: number) {
-      return await this.authService.Delete(id);
-    }
+  @Get()
+  public async getAll() {
+    return await this.authService.findAll();
+  }
+  @Get(':id')
+  public async getOne(@Param('id') id: number) {
+    return await this.authService.findOne(id);
+  }
+  @Delete(':id')
+  public async Delete(@Param('id') id: number) {
+    return await this.authService.Delete(id);
+  }
 }

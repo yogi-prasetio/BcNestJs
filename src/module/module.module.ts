@@ -36,6 +36,9 @@ import { EmployeeService } from 'src/employee/employee.service';
 import { EmployeeController } from 'src/employee/employee.controller';
 import { JobService } from 'src/job/job.service';
 import { JobController } from 'src/job/job.controller';
+import { ProductService } from 'src/product/product.service';
+import { ProductController } from 'src/product/product.controller';
+import { UploadMiddleware } from 'src/upload/upload.middleware';
 
 @Module({
   imports: [
@@ -58,9 +61,11 @@ import { JobController } from 'src/job/job.controller';
     JwtModule.register({
       secret: 'secretKey',
       signOptions: { expiresIn: '2d' },
-    })
+    }),
+    MulterModule.register(UploadMiddleware.MulterOption()),
   ],
   providers: [
+    ProductService,
     JobService,
     EmployeeService,
     DepartmentService,
@@ -73,6 +78,7 @@ import { JobController } from 'src/job/job.controller';
     LocalGuard, 
     JwtGuard],
   controllers: [
+    ProductController,
     JobController,
     EmployeeController,
     DepartmentController,
@@ -83,6 +89,7 @@ import { JobController } from 'src/job/job.controller';
     CustomerController, 
     UserController],
   exports: [
+    ProductService,
     JobService,
     EmployeeService,
     DepartmentService,

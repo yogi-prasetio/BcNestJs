@@ -44,9 +44,9 @@ export class UserService {
 
   public async login(user: any) {
     const payload = {
-      user_id: user.id,
+      id: user.id,
       username: user.username,
-      user_pass: user.password,
+      password: user.password,
     };
     return {
       access_token: this.jwtService.sign(payload),
@@ -54,11 +54,10 @@ export class UserService {
   }
 
   public async getAll(user: any) {
-    const customer = await this.custRepo.findOne(
-      { where: { user_id: user.user_id } });
+    const customer = await this.custRepo.findOne({ where: { id: user.id } });
 
-      const profile = [user, customer];
-      return profile;
+    const profile = [user, customer];
+    return profile;
   }
 
   public async findAll() {
